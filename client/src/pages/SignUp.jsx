@@ -6,12 +6,16 @@ export default function SignUp() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  // Create handleChange function
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
   };
+
+  // Create handleSubmit function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -37,7 +41,6 @@ export default function SignUp() {
       setError(error.message);
     }
   };
-  console.log(error);
   return (
     <div className='max-w-lg p-3 mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>SignUp</h1>
