@@ -1,6 +1,12 @@
 import express from "express";
 import { verifyToken } from "../utils/verifyUser.js";
-import { createListing, deleteListing, updateListing, getListing } from "../controllers/listing.controller.js";
+import {
+  createListing,
+  deleteListing,
+  updateListing,
+  getListing,
+  getListings,
+} from "../controllers/listing.controller.js";
 
 const router = express.Router();
 
@@ -17,5 +23,8 @@ router.post("/update/:id", verifyToken, updateListing);
 // Get listing route
 
 router.get("/get/:id", getListing);
+
+// Get listings route
+router.get("/get/", getListings);
 
 export default router;
