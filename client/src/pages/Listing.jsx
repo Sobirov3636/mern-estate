@@ -40,8 +40,8 @@ export default function Listing() {
   }, [params.listingId]);
   return (
     <main>
-      {loading && <p className='text-center my-7 text-2xl'>Loading...</p>}
-      {error && <p className='text-center my-7 text-2xl'>Something went wrong!</p>}
+      {loading && <p className='text-2xl text-center my-7'>Loading...</p>}
+      {error && <p className='text-2xl text-center my-7'>Something went wrong!</p>}
       {listing && !loading && !error && (
         <div>
           <Swiper navigation>
@@ -67,7 +67,7 @@ export default function Listing() {
             />
           </div>
           {copied && <p className='fixed top-[23%] right-[5%] z-10 rounded-md bg-slate-100 p-2'>Link copied!</p>}
-          <div className='flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4'>
+          <div className='flex flex-col max-w-4xl gap-4 p-3 mx-auto my-7'>
             <p className='text-2xl font-semibold'>
               {listing.name} - ${" "}
               {listing.offer
@@ -75,7 +75,7 @@ export default function Listing() {
                 : listing.regularPrice.toLocaleString("en-US")}
               {listing.type === "rent" && " / month"}
             </p>
-            <p className='flex items-center mt-6 gap-2 text-slate-600  text-sm'>
+            <p className='flex items-center gap-2 mt-6 text-sm text-slate-600'>
               <FaMapMarkerAlt className='text-green-700' />
               {listing.address}
             </p>
@@ -85,7 +85,7 @@ export default function Listing() {
               </p>
               {listing.offer && (
                 <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
-                  ${+listing.regularPrice - +listing.discountPrice}
+                  ${+listing.regularPrice - +listing.discountPrice} discount
                 </p>
               )}
             </div>
@@ -93,7 +93,7 @@ export default function Listing() {
               <span className='font-semibold text-black'>Description - </span>
               {listing.description}
             </p>
-            <ul className='text-green-900 font-semibold text-sm flex flex-wrap items-center gap-4 sm:gap-6'>
+            <ul className='flex flex-wrap items-center gap-4 text-sm font-semibold text-green-900 sm:gap-6'>
               <li className='flex items-center gap-1 whitespace-nowrap '>
                 <FaBed className='text-lg' />
                 {listing.bedrooms > 1 ? `${listing.bedrooms} beds ` : `${listing.bedrooms} bed `}
@@ -114,7 +114,7 @@ export default function Listing() {
             {currentUser && listing.userRef !== currentUser._id && !contact && (
               <button
                 onClick={() => setContact(true)}
-                className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3'
+                className='p-3 text-white uppercase rounded-lg bg-slate-700 hover:opacity-95'
               >
                 Contact landlord
               </button>
