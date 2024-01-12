@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css/bundle";
+import "swiper/css/autoplay";
 import ListingItems from "../components/ListingItems";
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
   const [saleListings, setSaleListings] = useState([]);
   const [rentListings, setRentListings] = useState([]);
 
-  SwiperCore.use([Navigation]);
+  SwiperCore.use([Navigation, Pagination, Autoplay]);
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
@@ -64,7 +65,7 @@ export default function Home() {
       </div>
 
       {/* swiper */}
-      <Swiper navigation>
+      <Swiper navigation pagination={{ clickable: true }} autoplay={true}>
         {offerListings &&
           offerListings.length > 0 &&
           offerListings.map((listing) => (
